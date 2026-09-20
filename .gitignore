@@ -1,0 +1,23 @@
+# Secrets and private runtime data never belong in this design repository.
+.env
+.env.*
+!.env.example
+private/
+personal/
+secrets/
+credentials/
+runtime/
+state/
+journals/
+logs/
+backups/
+*.pem
+*.key
+*.eml
+*.mbox
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+.venv/
+.DS_Store
