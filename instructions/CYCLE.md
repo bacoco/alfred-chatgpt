@@ -18,6 +18,14 @@ Rejeter chemin sortant du répertoire, URL arbitraire, doublon d'identifiant,
 mode inconnu ou fiche manquante. Ne pas exécuter `TEMPLATE.md`.
 La grande analyse historique n'a pas à être relue à chaque réveil.
 
+## Mémoire privée
+
+Le propriétaire a choisi un dépôt GitHub privé distinct ; appliquer
+[MEMOIRE.md](MEMOIRE.md). Cette décision remplace le choix de stockage encore
+ouvert, sans activer les tâches. Charger le contrôle privé avant les dossiers.
+Ne pas traiter les fixtures comme des affaires réelles ; ne rien écrire ici de privé.
+La reprise dans une nouvelle conversation et le scheduler restent à tester.
+
 ## GitHub indisponible au démarrage
 
 Appliquer la [procédure MCP](../docs/MCP_CONVERSATION_RECOVERY.md) si elle est déjà

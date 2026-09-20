@@ -28,7 +28,9 @@ Sauve un checkpoint seulement si le stockage reste accessible et autorisé.
 Travaille dans ChatGPT Chat sur bacoco/alfred-chatgpt, avec GitHub — chatgpt et
 le compte explicitement autorisé. Lis instructions/CYCLE.md depuis main,
 puis ses instructions métier à la même révision Git. Traite uniquement les
-tâches et comptes déjà autorisés, conserve l'état privé et vérifie les résultats.
+tâches et comptes déjà autorisés. Lis instructions/MEMOIRE.md pour le stockage
+privé choisi, puis son contrôle d'activation avant les dossiers. Vérifie les résultats.
+Le choix de stockage n'autorise aucun import ni aucune action extérieure.
 Si une source, une permission ou l'état privé manque, rends le blocage sans
 inventer une lecture ni un résultat. N'active aucune tâche et ne change aucun droit.
 Aucune bascule implicite vers Work, Codex, GitHub Actions ou une API de modèle.
