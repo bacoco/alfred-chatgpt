@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "description": "Catalogue public de tâches génériques ; aucun runtime ni mandat actif.",
+  "tasks": [
+    {
+      "id": "briefing",
+      "instruction": "instructions/tasks/BRIEFING.md",
+      "enabled": false,
+      "mode": "observe",
+      "priority": 1,
+      "schedule_kind": "recurring",
+      "cadence": "Chaque matin ; horaire et première échéance à valider."
+    },
+    {
+      "id": "relances",
+      "instruction": "instructions/tasks/RELANCES.md",
+      "enabled": false,
+      "mode": "prepare",
+      "priority": 2,
+      "schedule_kind": "recurring",
+      "cadence": "Chaque jour ouvré ; horaire et calendrier à valider."
+    },
+    {
+      "id": "abonnements",
+      "instruction": "instructions/tasks/ABONNEMENTS.md",
+      "enabled": false,
+      "mode": "observe",
+      "priority": 3,
+      "schedule_kind": "recurring",
+      "cadence": "Revue hebdomadaire ; jour et horaire à valider."
+    }
+  ]
+}

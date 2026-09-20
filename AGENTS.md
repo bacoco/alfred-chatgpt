@@ -39,3 +39,12 @@ Préférer des documents courts et liés ; garder les nouveaux modules et docume
 Dater les sources et les observations. Distinguer fait vérifié, déclaration du fournisseur, résultat de benchmark, inférence et recommandation. Les assertions de l'analyse initiale doivent être revalidées avant une décision d'implémentation.
 
 Tester prioritairement les faux positifs, réponses tardives, doublons, révocations, résultats perdus, changements de contrat, injections et interventions inutiles. Rapporter les blocages au lieu d'annoncer un succès sans preuve.
+
+## Kit d'instructions métier
+
+Lire `instructions/README.md` pour modifier le comportement d'ALFRED et
+`docs/MISE-EN-SERVICE.md` pour le raccordement. `instructions/tasks/registry.json`
+est l'unique catalogue public des tâches ; leurs instances personnelles sont privées.
+Ne pas dupliquer les préférences dans le prompt du scheduler ou dans les fiches.
+Les contrats de `instructions/CYCLE.md` sont à implémenter, pas des capacités livrées.
+Préserver les tâches désactivées tant que l'activation n'est pas demandée et autorisée.

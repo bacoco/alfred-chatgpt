@@ -2,6 +2,10 @@
 
 Date : 20 septembre 2026. **Proposition de l'étude ; aucune phase n'est activée.**
 
+Le [kit d'instructions modifiables](../instructions/README.md) complète désormais
+le dossier. Pour les six étapes concrètes et les preuves de mise en service,
+voir [MISE-EN-SERVICE.md](MISE-EN-SERVICE.md). Le kit ne constitue pas un runtime.
+
 ## Phase 0 — Vérifier les capacités et l'existant
 
 Relire le code, les tests et les derniers reçus de `chatgpt-cost-router` et `loriq-watch-scheduler`. Recenser séparément les capacités de Chat interactif et de la tâche planifiée. Vérifier les droits du compte, la lecture d'un registre, la persistance d'un checkpoint et les actions des connecteurs requis.
