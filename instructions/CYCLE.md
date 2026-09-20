@@ -69,17 +69,37 @@ Un reçu comprend au minimum : identifiant de cycle, SHA des instructions,
 version du mandat, tâches sélectionnées, états, sources traitées et checkpoints.
 Un reçu ne contient pas de secret et ne doit pas être publié automatiquement.
 
-## Prompt court pour un futur réveil
+## Prompt autonome pour un futur réveil
 
-> Dans ChatGPT Chat, pour bacoco/alfred-chatgpt, lis instructions/CYCLE.md sur
-> main et applique-le avec les seuls comptes, tâches et mandats privés déjà
-> autorisés. Relis les instructions GitHub à chaque cycle. Si le stockage privé,
-> les capacités ou l'autorisation manquent, rends le blocage sans effet externe.
-> N'active rien, ne change aucun droit et ne bascule pas vers Work, Codex ou une API.
-> Si GitHub refuse le contexte ou reste sans outil après sélection vérifiée,
-> distingue ce cas des permissions GitHub. En Chat, propose une nouvelle branche
-> de conversation autorisée et un test de lecture ; en tâche, signale le blocage.
-> Ne garantis pas la reprise et ne répète aucune écriture au résultat incertain.
+Copier le bloc complet, également maintenu dans [LANCEMENT.md](LANCEMENT.md).
+Il doit être chargé avant le premier accès au dépôt, pas seulement référencé.
 
-Ce prompt devra être intégré et testé dans une vraie tâche après autorisation.
-Le coller dans un fichier GitHub ne crée pas de Scheduled Task.
+```text
+[MCP-CONVERSATION-RECOVERY-v1]
+Utilise le connecteur et le compte explicitement choisis par l'utilisateur.
+Distingue outil absent et appel échoué ; rapporte l'erreur réellement observée.
+Pour « This conversation does not support developer MCPs », « This conversation
+is restricted to developer MCPs », ou des outils absents après sélection vérifiée,
+en Chat interactif propose une branche de conversation ChatGPT autorisée
+(⋯ → Branch in new chat), ou un nouveau chat autorisé, puis la sélection du même
+plugin et un seul test de lecture minimale vérifiable. Pas une branche Git.
+Ne présente pas cette piste comme un correctif garanti ni une cause démontrée.
+Ne modifie pas les permissions et ne substitue pas un autre compte/connecteur.
+Ne contourne aucune restriction administrateur, protection ou approbation explicite.
+Ne confonds pas ce cas avec authentification, droits GitHub, quota ou approbation.
+Si le retest échoue, arrête les boucles et conserve le diagnostic sans secrets.
+Une lecture réussie ne valide ni les écritures ni les exécutions planifiées.
+Réconcilie toute écriture incertaine avant reprise ; ne la rejoue pas aveuglément.
+En tâche planifiée, signale le blocage dans le résultat disponible, sans créer
+une tâche de remplacement ni prétendre avoir ouvert une nouvelle conversation.
+Sauve un checkpoint seulement si le stockage reste accessible et autorisé.
+
+Dans ChatGPT Chat, pour bacoco/alfred-chatgpt, lis instructions/CYCLE.md sur
+main et applique-le avec les seuls comptes, tâches et mandats privés déjà
+autorisés. Relis les instructions GitHub à chaque cycle. Si le stockage privé,
+les capacités ou l'autorisation manquent, rends le blocage sans effet externe.
+N'active rien, ne change aucun droit et ne bascule pas vers Work, Codex ou une API.
+```
+
+Ce prompt est une configuration versionnée, pas une tâche native installée.
+Les tâches existantes, horaires, permissions et réglages du plugin restent inchangés.

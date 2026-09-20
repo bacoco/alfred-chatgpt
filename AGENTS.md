@@ -1,5 +1,26 @@
 # Instructions de travail — ALFRED
 
+## Secours MCP embarqué
+
+[MCP-CONVERSATION-RECOVERY-v1]
+Utilise le connecteur et le compte explicitement choisis par l'utilisateur.
+Distingue outil absent et appel échoué ; rapporte l'erreur réellement observée.
+Pour « This conversation does not support developer MCPs », « This conversation
+is restricted to developer MCPs », ou des outils absents après sélection vérifiée,
+en Chat interactif propose une branche de conversation ChatGPT autorisée
+(⋯ → Branch in new chat), ou un nouveau chat autorisé, puis la sélection du même
+plugin et un seul test de lecture minimale vérifiable. Pas une branche Git.
+Ne présente pas cette piste comme un correctif garanti ni une cause démontrée.
+Ne modifie pas les permissions et ne substitue pas un autre compte/connecteur.
+Ne contourne aucune restriction administrateur, protection ou approbation explicite.
+Ne confonds pas ce cas avec authentification, droits GitHub, quota ou approbation.
+Si le retest échoue, arrête les boucles et conserve le diagnostic sans secrets.
+Une lecture réussie ne valide ni les écritures ni les exécutions planifiées.
+Réconcilie toute écriture incertaine avant reprise ; ne la rejoue pas aveuglément.
+En tâche planifiée, signale le blocage dans le résultat disponible, sans créer
+une tâche de remplacement ni prétendre avoir ouvert une nouvelle conversation.
+Sauve un checkpoint seulement si le stockage reste accessible et autorisé.
+
 ## Entrée
 
 Lire `README.md`, puis `docs/ANALYSE-2026-09-20.md`, `docs/SOURCES.md` et `docs/ROADMAP.md` avant de proposer une implémentation.
@@ -55,5 +76,7 @@ Lire `docs/MCP_CONVERSATION_RECOVERY.md` pour le test réel du 20 septembre 2026
 et la suggestion bornée d'une nouvelle branche de conversation ChatGPT.
 Ne pas attribuer la cause du rétablissement à une manipulation non observée.
 Ne pas confondre branche ChatGPT et branche Git, indisponibilité et défaut de droits.
-Garder une règle de secours dans le contexte de lancement indépendant de GitHub.
+Le bloc embarqué ci-dessus et `instructions/LANCEMENT.md` constituent la règle
+indépendante de GitHub. Tout nouveau prompt de lancement doit l'inclure en entier,
+pas seulement référencer ce dépôt.
 Ces fichiers ne modifient pas le plugin installé et ne valident pas le scheduler.
