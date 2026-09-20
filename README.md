@@ -6,38 +6,52 @@ Nom de travail : **ALFRED**, en référence au majordome de Batman. Dépôt : [`
 
 > Un second cerveau retrouve ce que tu sais. Un vrai secrétaire sait aussi ce qui reste à faire, qui attend quoi, quand intervenir et si l'action a réellement abouti.
 
-## Statut
+## Installer ALFRED dans un nouveau Chat
 
-**Dossier de conception et kit d'instructions, pas une application déployée.**
-L'analyse du 20 septembre 2026 est conservée ici. Le dossier `instructions/` permet
-de préparer et versionner les consignes, préférences et tâches du futur secrétaire.
-Ses trois tâches sont désactivées. Aucun scheduler ni accès à un compte personnel
-n'a été activé pour constituer ce dossier.
+Dans un nouveau ChatGPT Chat, connectez GitHub et les applications que vous voulez confier à ALFRED, puis copiez simplement cette phrase :
 
-Le dossier est publié sur `main`. Le [compte rendu d'export initial](records/EXPORT-2026-09-20.md)
-conserve l'historique du blocage antérieur ; il ne décrit pas l'état courant de la
-publication. Publier cette documentation ne déploie aucun agent.
+> **Installe ALFRED pour moi à partir de `bacoco/alfred-chatgpt`. Guide-moi pour définir ce que mon secrétaire doit faire, crée ou configure un dépôt GitHub privé séparé pour ma mémoire personnelle, teste les connecteurs réellement disponibles, puis mets en place avec mon accord un scheduler ChatGPT natif selon la cadence que je choisis. Reste en mode Chat uniquement et applique `instructions/LANCEMENT.md`.**
 
-## Piloter et rendre fonctionnel
+Cette phrase est volontairement courte : le Chat doit ensuite lire le dépôt public et utiliser ses instructions comme kit de construction.
 
-**[Modifier les instructions et les tâches](instructions/README.md)** : mission,
-préférences, autonomie, catalogue des tâches, fiches briefing/relances/abonnements
-et modèle pour ajouter une tâche ponctuelle ou récurrente.
+ALFRED doit alors :
+1. lire le dépôt public et charger `instructions/LANCEMENT.md`, `instructions/CYCLE.md`, la mission, les préférences, l'autonomie et le catalogue des tâches ;
+2. discuter avec l'utilisateur pour définir **son** secrétaire : missions, ton, priorités, sources, horaires, niveau d'autonomie et actions interdites ;
+3. créer ou configurer, avec accord de l'utilisateur, **un dépôt GitHub privé distinct** pour la mémoire et les résultats personnels ;
+4. tester réellement les connecteurs choisis avant de considérer une capacité comme disponible ;
+5. réaliser d'abord un petit cycle interactif vérifiable ;
+6. créer ensuite, avec accord de l'utilisateur, une **Scheduled Task ChatGPT native** à l'horaire et à la cadence choisis ;
+7. conserver les résultats privés, dossiers, checkpoints et préférences dans le dépôt privé et laisser ce dépôt public générique ;
+8. permettre ensuite à l'utilisateur de retuner ALFRED simplement en discutant avec lui : modifier mission, priorités, cadence, sources, autonomie, tâches et préférences, puis enregistrer les changements au bon endroit.
 
-**[Étapes de mise en service](docs/MISE-EN-SERVICE.md)** : capacités réelles,
-stockage privé, cycle interactif, premier périmètre autorisé, test planifié,
-puis actions déléguées. Le [contrat de cycle](instructions/CYCLE.md) impose au futur
-pilote de relire les consignes GitHub à chaque réveil ; ce pilote reste à raccorder.
+Le dépôt privé n'a pas besoin de porter un nom imposé. Le Chat doit demander ou proposer un nom et vérifier qu'il est bien privé avant toute donnée personnelle.
 
-## Lire l'étude
+## Si le connecteur ne fonctionne pas dans le Chat
 
-**[Analyse complète — 20 septembre 2026](docs/ANALYSE-2026-09-20.md)** : vision,
-existant à réutiliser, comparaison des projets, papers et benchmarks, architecture,
-scénarios métier, autonomie, confidentialité, coût et ordre de réalisation.
+Si le connecteur demandé est bien sélectionné mais que cette conversation renvoie par exemple :
 
-Les [sources](docs/SOURCES.md) remplacent les citations propres à l'interface ChatGPT
-par des références transportables. Les caractéristiques temporelles et les chiffres
-de l'analyse initiale ne sont pas certifiés par cet export ; leur statut est indiqué.
+- `This conversation does not support developer MCPs`
+- `This conversation is restricted to developer MCPs`
+- ou que les outils du même connecteur restent absents,
+
+alors, en **Chat interactif**, utiliser **⋯ → Branch in new chat**, conserver **le même connecteur et le même compte**, puis refaire **une seule lecture minimale vérifiable**. À défaut, ouvrir un nouveau Chat autorisé et refaire ce test.
+
+Il s'agit d'une **branche de conversation ChatGPT, pas d'une branche Git**. Cette méthode a été suivie d'un rétablissement de lecture lors d'un test ALFRED, mais **elle n'est pas une réparation garantie et sa causalité n'est pas démontrée**. Ne changez ni de connecteur ni de permissions pour contourner un refus.
+
+En tâche planifiée, ALFRED ne peut pas créer lui-même une nouvelle conversation : il doit simplement rapporter le blocage. Voir [`docs/MCP_CONVERSATION_RECOVERY.md`](docs/MCP_CONVERSATION_RECOVERY.md).
+
+## Personnaliser ALFRED
+
+Le Chat de configuration doit utiliser ces fichiers comme source de vérité :
+
+- [`instructions/MISSION.md`](instructions/MISSION.md) — ce qu'ALFRED doit accomplir ;
+- [`instructions/PREFERENCES.md`](instructions/PREFERENCES.md) — ton, ordre des priorités, forme du briefing ;
+- [`instructions/AUTONOMIE.md`](instructions/AUTONOMIE.md) — ce qu'il peut lire, préparer ou exécuter ;
+- [`instructions/tasks/registry.json`](instructions/tasks/registry.json) — tâches disponibles et activation ;
+- [`instructions/CYCLE.md`](instructions/CYCLE.md) — déroulement d'un réveil ;
+- [`instructions/LANCEMENT.md`](instructions/LANCEMENT.md) — contexte autonome à charger au démarrage.
+
+Les données personnelles, comptes, mandats, dossiers réels, échéances et résultats restent dans le dépôt privé de l'utilisateur.
 
 ## Ce que vise ALFRED
 
@@ -49,36 +63,26 @@ de l'analyse initiale ne sont pas certifiés par cet export ; leur statut est in
 | Documents et projets | Relier preuves, décisions et affaires ouvertes, au-delà de Gmail. |
 | Mémoire personnelle | Conserver des connaissances et préférences datées, sourcées, corrigibles et portables. |
 
-## Architecture cible
+## Architecture
 
-ChatGPT Chat comprend et raisonne. Un état durable privé conserve connaissance,
-affaires et journal. Les connecteurs autorisés réalisent les opérations. Le code
-déterministe contrôle les mandats, dates, doublons et preuves de résultat.
-Le wiki, le registre des affaires et le journal sont distincts. Une préférence n'est
-pas une permission. Un message envoyé n'est pas nécessairement une affaire résolue.
+ChatGPT Chat comprend et raisonne. Un état durable privé conserve connaissance, affaires et journal. Les connecteurs autorisés réalisent les opérations. Le code déterministe contrôle les mandats, dates, doublons et preuves de résultat.
 
-## Existant d'abord
-
-Réutiliser ou étendre [Chat-first Operations](https://github.com/bacoco/chatgpt-cost-router)
-et les primitives de [loriq-watch-scheduler](https://github.com/bacoco/loriq-watch-scheduler).
-Étudier Basic Memory, Inbox Zero et Wallos sans imposer leur adoption ni dupliquer
-leurs runtimes. Aucun changement de voie d'exécution n'est implicite.
-
-La cible reste **ChatGPT Chat + réveils périodiques**, sans bascule vers Work,
-Codex, un autre modèle ou une API payante. Vérifier les capacités dans chaque
-surface, particulièrement en exécution planifiée. Pas d'exécution via GitHub Actions.
+La cible reste **ChatGPT Chat + réveils périodiques**, sans bascule implicite vers Work, Codex, GitHub Actions ou une API de modèle externe.
 
 ## Confidentialité
 
-Ce dépôt est **public** : il conserve la conception et des consignes génériques,
-pas la vie privée de l'utilisateur. Emails, contrats, factures, secrets, profils,
-paramètres des tâches personnelles, mandats et journaux réels restent hors Git.
-Les exemples sont synthétiques. La visibilité du dépôt n'a pas été modifiée.
+Ce dépôt est **public** : il conserve la conception et des consignes génériques, jamais la vie privée de l'utilisateur. Emails, contrats, factures, secrets, profils, paramètres personnels, mandats et journaux réels restent dans le dépôt privé.
 
-## Construire ensuite
+Ne jamais stocker de mot de passe, token, clé privée ou export brut inutilement sensible dans Git.
 
-Voir la [feuille de route](docs/ROADMAP.md), les [règles pour les agents](AGENTS.md)
-et le [mode de publication](docs/PUBLICATION.md). Ces documents cadrent la suite
-sans autoriser à eux seuls une exécution, une connexion ou un changement de droits.
+## Documentation
+
+- [Mise en service détaillée](docs/MISE-EN-SERVICE.md)
+- [Contrat de cycle](instructions/CYCLE.md)
+- [Prompt de lancement autonome](instructions/LANCEMENT.md)
+- [Reprise d'un connecteur refusé](docs/MCP_CONVERSATION_RECOVERY.md)
+- [Analyse fondatrice](docs/ANALYSE-2026-09-20.md)
+- [Sources](docs/SOURCES.md)
+- [Feuille de route](docs/ROADMAP.md)
 
 Projet indépendant ; aucune affiliation à DC ou OpenAI n'est revendiquée.
