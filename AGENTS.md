@@ -48,3 +48,12 @@ est l'unique catalogue public des tâches ; leurs instances personnelles sont pr
 Ne pas dupliquer les préférences dans le prompt du scheduler ou dans les fiches.
 Les contrats de `instructions/CYCLE.md` sont à implémenter, pas des capacités livrées.
 Préserver les tâches désactivées tant que l'activation n'est pas demandée et autorisée.
+
+## Reprise du connecteur GitHub
+
+Lire `docs/MCP_CONVERSATION_RECOVERY.md` pour le test réel du 20 septembre 2026
+et la suggestion bornée d'une nouvelle branche de conversation ChatGPT.
+Ne pas attribuer la cause du rétablissement à une manipulation non observée.
+Ne pas confondre branche ChatGPT et branche Git, indisponibilité et défaut de droits.
+Garder une règle de secours dans le contexte de lancement indépendant de GitHub.
+Ces fichiers ne modifient pas le plugin installé et ne valident pas le scheduler.

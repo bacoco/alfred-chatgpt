@@ -77,3 +77,12 @@ Les instances personnelles des tâches utilisent ce stockage, sans exposer leurs
 paramètres dans le catalogue public. Ne jamais placer une clé ou un jeton ici.
 
 Prochaine étape : [mise en service](../docs/MISE-EN-SERVICE.md).
+
+## Si GitHub est connecté mais inutilisable dans ce chat
+
+Voir la [reprise MCP documentée](../docs/MCP_CONVERSATION_RECOVERY.md).
+Après vérification de la sélection, un refus visant le contexte peut justifier
+une nouvelle branche **de conversation ChatGPT**, puis un retest de lecture.
+Ce n'est ni un correctif garanti, ni une branche Git, ni une autorisation nouvelle.
+La règle courte doit aussi être présente dans le contexte de lancement : un lien
+GitHub seul ne permet pas d'obtenir l'aide lorsque GitHub est bloqué.

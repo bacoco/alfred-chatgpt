@@ -18,6 +18,17 @@ Rejeter chemin sortant du répertoire, URL arbitraire, doublon d'identifiant,
 mode inconnu ou fiche manquante. Ne pas exécuter `TEMPLATE.md`.
 La grande analyse historique n'a pas à être relue à chaque réveil.
 
+## GitHub indisponible au démarrage
+
+Appliquer la [procédure MCP](../docs/MCP_CONVERSATION_RECOVERY.md) si elle est déjà
+connue du contexte de lancement. Distinguer outil absent, refus de conversation
+et droits GitHub. Ne pas déclarer les consignes chargées si leur lecture échoue.
+En Chat interactif, proposer une branche de conversation autorisée pour un refus
+de contexte persistant, puis un retest de lecture, sans garantir la réparation.
+En tâche planifiée, signaler le blocage dans le résultat accessible ; ne pas créer
+une nouvelle tâche ou simuler une nouvelle conversation. Sauver un reçu seulement
+si le stockage est disponible et autorisé. Aucun effet incertain n'est rejoué.
+
 ## Sélection et préparation
 
 Vérifier les instructions reconnues du propriétaire, l'état d'activation privé,
@@ -65,6 +76,10 @@ Un reçu ne contient pas de secret et ne doit pas être publié automatiquement.
 > autorisés. Relis les instructions GitHub à chaque cycle. Si le stockage privé,
 > les capacités ou l'autorisation manquent, rends le blocage sans effet externe.
 > N'active rien, ne change aucun droit et ne bascule pas vers Work, Codex ou une API.
+> Si GitHub refuse le contexte ou reste sans outil après sélection vérifiée,
+> distingue ce cas des permissions GitHub. En Chat, propose une nouvelle branche
+> de conversation autorisée et un test de lecture ; en tâche, signale le blocage.
+> Ne garantis pas la reprise et ne répète aucune écriture au résultat incertain.
 
 Ce prompt devra être intégré et testé dans une vraie tâche après autorisation.
 Le coller dans un fichier GitHub ne crée pas de Scheduled Task.
