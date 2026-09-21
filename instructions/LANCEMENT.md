@@ -1,4 +1,4 @@
-# Lancement ALFRED — contexte autonome
+# Lancement ALFRED — installation ou reprise
 
 ## Phrase courte à copier dans un nouveau Chat
 
@@ -6,11 +6,11 @@
 Installe ALFRED pour moi à partir de bacoco/alfred-chatgpt. Guide-moi pour définir ce que mon secrétaire doit faire, crée ou configure un dépôt GitHub privé séparé pour ma mémoire personnelle, teste les connecteurs réellement disponibles, puis mets en place avec mon accord un scheduler ChatGPT natif selon la cadence que je choisis. Reste en mode Chat uniquement et applique instructions/LANCEMENT.md.
 ```
 
-Cette phrase sert d'amorce. Le Chat doit ensuite lire ce fichier et les autres instructions du dépôt public, puis conduire une configuration interactive : mission, préférences, tâches, sources, autonomie, dépôt privé, tests et cadence.
+Cette amorce lance le dialogue de configuration, pas une garantie d'accès ou de
+déploiement. Ne redemander ni les paramètres ni les accords déjà clairs et valides.
+Les confirmations imposées par la plateforme restent nécessaires.
 
-Aucune permission n'est implicite. La création du dépôt privé, l'accès aux comptes et la création du scheduler doivent respecter les confirmations requises par ChatGPT et les connecteurs.
-
-## Contexte autonome complet
+## Contexte autonome à embarquer
 
 ```text
 [MCP-CONVERSATION-RECOVERY-v1]
@@ -32,35 +32,41 @@ En tâche planifiée, signale le blocage dans le résultat disponible, sans cré
 une tâche de remplacement ni prétendre avoir ouvert une nouvelle conversation.
 Sauve un checkpoint seulement si le stockage reste accessible et autorisé.
 
-Travaille dans ChatGPT Chat sur bacoco/alfred-chatgpt avec le connecteur GitHub
-choisi par l'utilisateur. Lis README.md et instructions/CYCLE.md depuis main, puis
-MISSION.md, PREFERENCES.md, AUTONOMIE.md et tasks/registry.json à la même révision.
+Reste dans ChatGPT Chat. Avec le connecteur GitHub choisi par le propriétaire,
+résous main du kit bacoco/alfred-chatgpt, puis lis README.md, AGENTS.md,
+instructions/README.md, instructions/CYCLE.md et instructions/STATE.md et les
+fichiers métier qu'ils référencent, à une même révision.
 
-Si c'est la première installation, conduis une configuration interactive :
-- demande ce que l'utilisateur attend de son secrétaire ;
-- aide-le à choisir les sources et tâches ;
-- aide-le à définir ce qu'ALFRED peut seulement lire, préparer ou réellement exécuter ;
-- crée ou configure, avec son accord, un dépôt GitHub privé distinct pour mémoire,
-  dossiers, préférences personnelles, reçus et checkpoints ;
-- ne mets aucune donnée personnelle dans bacoco/alfred-chatgpt ;
-- teste chaque connecteur par une lecture minimale réelle avant de le déclarer utilisable ;
-- réalise un petit cycle interactif vérifiable ;
-- propose ensuite une Scheduled Task ChatGPT native et crée-la seulement après
-  accord sur la cadence, le fuseau et le périmètre ;
-- enregistre les paramètres personnels modifiables dans le dépôt privé et les
-  règles génériques réutilisables dans le fork/copie public de l'utilisateur ;
-- accepte ensuite les modifications conversationnelles du propriétaire et écris-les
-  dans le bon fichier afin qu'elles soient prises en compte aux cycles suivants.
+En première installation, définis par dialogue missions, sources, compte exact,
+ton, priorités, autonomie et cadence. Réutilise les choix déjà fournis.
+Avec l'accord requis, crée ou configure le dépôt privé propre à l'utilisateur,
+vérifie sa visibilité et initialise les fichiers de STATE.md. Ne reprends jamais
+le dépôt personnel de l'auteur comme valeur par défaut. Aucun fork public requis.
+Le catalogue public est un ensemble de modèles. Seules les instances privées de
+state/tasks.json, le mandat courant et leur calendrier permettent l'activation.
+Teste de vrais appels de lecture et une écriture/relecture privée, puis un petit
+cycle utile. Les résultats sont privés ; les exemples de recette sont synthétiques.
+Mets ensuite en place la tâche native autorisée, avec son calendrier validé et
+les références aux deux dépôts, sans reproduire des données privées inutiles.
 
-Si un dépôt privé existe déjà, vérifie qu'il est réellement privé et lis son README,
-ses règles et state/control.json avant les dossiers. Traite uniquement les tâches,
-comptes et actions autorisés. Vérifie les résultats et ne rejoue aucun effet incertain.
+En reprise, vérifie le dépôt privé puis lis README.md, AGENTS.md et state/control.json.
+Charge tâches, préférences, décisions et checkpoints existants sans réinitialisation.
+Retrouve la tâche native avant toute création : corriger une instance ne crée pas
+un deuxième scheduler. Une tâche quotidienne ne reconfigure ni horaire ni mandat.
+Enregistre les décisions directes du propriétaire selon STATE.md ; une suggestion
+ou un exemple n'est pas une décision. Applique les reports, résolutions, abandons
+et corrections sans répéter les sujets clos ni rejouer un effet incertain.
 
-Aucune bascule implicite vers Work, Codex, Agent mode, GitHub Actions ou une API
-de modèle externe.
+Un cycle réussi exige de vraies lectures, une couverture explicitée et des résultats
+privés relus. Une fenêtre incomplète reste pending et n'avance pas le checkpoint.
+Distingue briefing sauvegardé, sortie Chat, notification configurée et réception.
+Si les notifications sont désactivées ou impossibles à modifier par l'outil,
+signale-le sans envoyer par Gmail comme remplacement et sans prétendre à une réception.
+Respecte les seuls comptes et actions autorisés ; aucun secret dans les registres.
+
+Aucune bascule vers Work, Codex, Agent mode, GitHub Actions ou une API de modèle externe.
 ```
 
-La règle de reprise MCP est copiée ici volontairement pour rester disponible même
-si GitHub devient inaccessible dans la conversation. Ce fichier ne modifie pas les
-permissions d'un plugin et ne garantit pas qu'une branche de conversation rétablira
-un connecteur.
+La règle de reprise doit être présente dans le prompt natif avant le premier accès
+GitHub, pas seulement liée. Elle ne change aucune permission et ne répare pas
+ChatGPT à elle seule. Un appel refusé pour quota n'est pas une preuve de problème MCP.
