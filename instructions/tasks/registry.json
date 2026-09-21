@@ -1,33 +1,11 @@
 {
   "schema_version": 1,
-  "description": "Catalogue public de tâches génériques ; aucun runtime ni mandat actif.",
+  "role": "public_templates",
+  "description": "Modèles génériques. enabled est une valeur initiale ; seules les instances privées autorisées dans state/tasks.json activent une tâche.",
+  "instance_registry": "state/tasks.json",
   "tasks": [
-    {
-      "id": "briefing",
-      "instruction": "instructions/tasks/BRIEFING.md",
-      "enabled": false,
-      "mode": "observe",
-      "priority": 1,
-      "schedule_kind": "recurring",
-      "cadence": "Chaque matin ; horaire et première échéance à valider."
-    },
-    {
-      "id": "relances",
-      "instruction": "instructions/tasks/RELANCES.md",
-      "enabled": false,
-      "mode": "prepare",
-      "priority": 2,
-      "schedule_kind": "recurring",
-      "cadence": "Chaque jour ouvré ; horaire et calendrier à valider."
-    },
-    {
-      "id": "abonnements",
-      "instruction": "instructions/tasks/ABONNEMENTS.md",
-      "enabled": false,
-      "mode": "observe",
-      "priority": 3,
-      "schedule_kind": "recurring",
-      "cadence": "Revue hebdomadaire ; jour et horaire à valider."
-    }
+    {"id":"briefing","instruction":"instructions/tasks/BRIEFING.md","enabled":false,"mode":"observe","priority":1,"schedule_kind":"recurring","cadence":"Chaque matin ; calendrier résolu dans l'instance privée."},
+    {"id":"relances","instruction":"instructions/tasks/RELANCES.md","enabled":false,"mode":"prepare","priority":2,"schedule_kind":"recurring","cadence":"Jours ouvrés ; calendrier à autoriser dans le privé."},
+    {"id":"abonnements","instruction":"instructions/tasks/ABONNEMENTS.md","enabled":false,"mode":"observe","priority":3,"schedule_kind":"recurring","cadence":"Revue hebdomadaire ; calendrier à autoriser dans le privé."}
   ]
 }

@@ -1,29 +1,32 @@
-# Mémoire privée — décision du propriétaire
+# Mémoire privée de chaque instance
 
-Le 20 septembre 2026, le propriétaire a choisi un **dépôt GitHub privé distinct**
-comme mémoire persistante. Le dépôt public `alfred-chatgpt` conserve uniquement le
-kit. Cette décision remplace les consignes historiques excluant tout usage de Git
-pour la mémoire ; les secrets et exports bruts restent exclus de tous les dépôts.
+Le kit public reste générique. Chaque propriétaire choisit **son propre dépôt
+GitHub privé**, sa branche et son connecteur déjà autorisé. Ne jamais reprendre
+le dépôt personnel de l'auteur comme valeur implicite d'une nouvelle installation.
+Ne changer ni le connecteur ni ses permissions pour contourner un refus.
 
-Dans le contexte personnel autorisé, la cible choisie est `bacoco/alfred-private`,
-branche `main`, via **GitHub — chatgpt**. Le nom est une configuration de connexion,
-pas un droit d'accès. Vérifier la visibilité privée et le compte avant les données.
-Si cette vérification échoue, signaler le blocage sans substituer de stockage.
+Avant toute donnée personnelle, vérifier le dépôt exact et sa visibilité privée.
+Lire README.md, AGENTS.md et state/control.json. Les instances de tâches,
+préférences, décisions et checkpoints sont définis par [STATE.md](STATE.md).
+Leur emplacement doit être conservé dans le contrôle privé et le contexte de
+lancement. Le catalogue public ne doit contenir ni comptes ni dossiers personnels.
 
-Lire le README privé, ses règles et `state/control.json` avant les dossiers.
-Les registres `state/cases.json`, `state/subscriptions.json` et
-`memory/profile.json` sont initialement vides. Les données de test sous
-`tests/fixtures/` ne sont jamais des affaires ni des préférences réelles.
-Les journaux et contenus privés restent exclusivement dans le dépôt privé.
+Réutiliser les registres existants. Une reprise de conversation ne réinitialise
+ni affaires, ni profil, ni autorisations, ni historique. tests/fixtures/ reste
+strictement synthétique et exclu des briefings. Les données et décisions réelles
+ne vont jamais dans le kit public, ses issues, ses tests ou une recherche web.
 
-Toute modification d'un fichier existant exige une lecture de son SHA courant,
-une écriture conditionnelle et une vérification après écriture. Une réponse perdue
-est à réconcilier. Le premier test séquentiel ne prouve pas la concurrence sûre.
+Le choix du stockage ne vaut pas autorisation d'importer tous les comptes.
+Respecter le mandat courant : une restriction privée peut arrêter les lectures
+ou les écritures. Tester chaque capacité dans la surface réellement utilisée.
+Une preuve en Chat interactif ne prouve pas l'exécution planifiée.
 
-Le choix et l'initialisation du stockage n'autorisent pas l'import de mails,
-l'activation des tâches, les brouillons Gmail ni les envois. Une entrée de contrôle
-ne remplace jamais un mandat. Les horaires et permissions restent inchangés.
+Relire le SHA courant avant remplacement et vérifier le contenu après écriture.
+Pour les changements cohérents multi-fichiers, appliquer le commit dérivé de la
+base relue et la mise à jour sans force décrits dans STATE.md. En cas de conflit
+ou de résultat incertain, réconcilier au lieu de réécrire aveuglément.
 
-Les résultats du test sont consignés dans le dépôt privé. La reprise effective
-dans une nouvelle conversation et l'exécution planifiée demandent encore un test
-sur chacune de ces surfaces. Aucun nouveau moteur ou service d'agent n'est installé.
+Ce stockage n'est pas un coffre de secrets. Aucun mot de passe, token, clé privée,
+lien de confirmation à usage unique, export brut ou pièce très sensible dans Git.
+Conserver des références et résumés minimaux. L'historique Git conserve les versions
+anciennes ; retirer un fichier de main n'efface pas cet historique.
