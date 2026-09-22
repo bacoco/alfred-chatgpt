@@ -1,0 +1,11 @@
+{
+  "schema_version": 2,
+  "confirmed_preferences": [],
+  "facts": [],
+  "proposed_defaults": {
+    "mode": "observe",
+    "delivery_channel": "chat",
+    "scope": "briefing personnel seulement"
+  },
+  "note": "Les défauts proposés ne sont pas des préférences confirmées ni des permissions. Les données confiées volontairement sont sourcées et modifiables."
+}

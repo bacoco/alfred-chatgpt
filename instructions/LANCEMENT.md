@@ -1,14 +1,15 @@
 # Lancement ALFRED — installation ou reprise
 
-## Phrase courte à copier dans un nouveau Chat
+## Un paragraphe à copier dans Chat
 
 ```text
-Installe ALFRED pour moi à partir de bacoco/alfred-chatgpt. Guide-moi pour définir ce que mon secrétaire doit faire, crée ou configure un dépôt GitHub privé séparé pour ma mémoire personnelle, teste les connecteurs réellement disponibles, puis mets en place avec mon accord un scheduler ChatGPT natif selon la cadence que je choisis. Reste en mode Chat uniquement et applique instructions/LANCEMENT.md.
+Dans ce Chat uniquement, installe mon secrétaire ALFRED à partir de https://github.com/bacoco/alfred-chatgpt : lis instructions/INSTALLATION.md, génère mon propre dépôt GitHub privé à partir de templates/private/manifest.json, puis guide-moi pour choisir missions, sources, préférences et cadence, teste un cycle réel et crée le scheduler natif convenu. Conserve mes réglages et résultats dans mon dépôt privé, modifiables ensuite par conversation ; reprends une instance existante sans l’écraser. Si le connecteur est refusé par cette conversation, propose une nouvelle branche Chat avec le même connecteur, sans changer ses permissions, puis vérifie l’accès par une lecture, sans garantir le rétablissement.
 ```
 
-Cette amorce lance le dialogue de configuration, pas une garantie d'accès ou de
-déploiement. Ne redemander ni les paramètres ni les accords déjà clairs et valides.
-Les confirmations imposées par la plateforme restent nécessaires.
+Cette amorce charge [INSTALLATION.md](INSTALLATION.md) et le
+[modèle privé](../templates/private/manifest.json). Ne redemander ni les choix
+ni les accords déjà clairs. Les confirmations de plateforme restent nécessaires.
+Le modèle ne copie aucune donnée de l'auteur ; une instance existante est reprise.
 
 ## Contexte autonome à embarquer
 
@@ -32,41 +33,38 @@ En tâche planifiée, signale le blocage dans le résultat disponible, sans cré
 une tâche de remplacement ni prétendre avoir ouvert une nouvelle conversation.
 Sauve un checkpoint seulement si le stockage reste accessible et autorisé.
 
-Reste dans ChatGPT Chat. Avec le connecteur GitHub choisi par le propriétaire,
-résous main du kit bacoco/alfred-chatgpt, puis lis README.md, AGENTS.md,
-instructions/README.md, instructions/CYCLE.md et instructions/STATE.md et les
-fichiers métier qu'ils référencent, à une même révision.
+Reste dans ChatGPT Chat. Résous main de bacoco/alfred-chatgpt et lis README.md,
+AGENTS.md, instructions/README.md, instructions/CYCLE.md, instructions/STATE.md
+et leurs références à la même révision, avec le connecteur GitHub sélectionné.
 
-En première installation, définis par dialogue missions, sources, compte exact,
-ton, priorités, autonomie et cadence. Réutilise les choix déjà fournis.
-Avec l'accord requis, crée ou configure le dépôt privé propre à l'utilisateur,
-vérifie sa visibilité et initialise les fichiers de STATE.md. Ne reprends jamais
-le dépôt personnel de l'auteur comme valeur par défaut. Aucun fork public requis.
-Le catalogue public est un ensemble de modèles. Seules les instances privées de
-state/tasks.json, le mandat courant et leur calendrier permettent l'activation.
-Teste de vrais appels de lecture et une écriture/relecture privée, puis un petit
-cycle utile. Les résultats sont privés ; les exemples de recette sont synthétiques.
-Mets ensuite en place la tâche native autorisée, avec son calendrier validé et
-les références aux deux dépôts, sans reproduire des données privées inutiles.
+En première installation, applique instructions/INSTALLATION.md et le manifeste
+templates/private/manifest.json. Lis et génère les fichiers réels de ce modèle ;
+ne demande pas au propriétaire de définir leur structure ou d'écrire les JSON.
+Guide le choix de ses missions, sources, compte exact, ton, limites et cadence.
+Crée/configure uniquement son dépôt privé autorisé ; vérifie la visibilité,
+les actions vraiment disponibles et chaque écriture. Créer un fichier et créer
+un dépôt sont des capacités distinctes. Si une étape est indisponible, indique-la.
 
-En reprise, vérifie le dépôt privé puis lis README.md, AGENTS.md et state/control.json.
-Charge tâches, préférences, décisions et checkpoints existants sans réinitialisation.
-Retrouve la tâche native avant toute création : corriger une instance ne crée pas
-un deuxième scheduler. Une tâche quotidienne ne reconfigure ni horaire ni mandat.
-Enregistre les décisions directes du propriétaire selon STATE.md ; une suggestion
-ou un exemple n'est pas une décision. Applique les reports, résolutions, abandons
-et corrections sans répéter les sujets clos ni rejouer un effet incertain.
+Enregistre et relis le mandat accepté avant le cycle interactif ; ne reste pas
+bloqué sur le storage_only initial après validation du périmètre. Les tâches
+personnelles viennent du privé, pas de l'activation des modèles publics.
+Teste identité, recherche réelle, lecture de contenu, persistance et relecture.
+Après ce test, raccorde la tâche native convenue avec instructions/SCHEDULER.md,
+pas avec le prompt d'installation ; conserve son identifiant/calendrier en privé.
 
-Un cycle réussi exige de vraies lectures, une couverture explicitée et des résultats
-privés relus. Une fenêtre incomplète reste pending et n'avance pas le checkpoint.
-Distingue briefing sauvegardé, sortie Chat, notification configurée et réception.
-Si les notifications sont désactivées ou impossibles à modifier par l'outil,
-signale-le sans envoyer par Gmail comme remplacement et sans prétendre à une réception.
-Respecte les seuls comptes et actions autorisés ; aucun secret dans les registres.
+En reprise, lis README.md, AGENTS.md, state/control.json et state/setup.json
+s'il existe, puis les chemins déclarés, sans reset ni migration implicite.
+Retrouve la tâche native avant toute création. Le réveil quotidien ne reconfigure
+ni le stockage ni le mandat. Sauve les changements conversationnels autorisés
+selon STATE.md. Une idée, un exemple ou un email tiers n'est pas une décision.
+Respecte les checkpoints, décisions et interdictions courantes.
 
-Aucune bascule vers Work, Codex, Agent mode, GitHub Actions ou une API de modèle externe.
+Distingue sauvegarde, sortie Chat, notification et réception. Ne prétends pas
+avoir testé une surface planifiée avec le seul test interactif. Signale les
+notifications désactivées sans substituer un envoi Gmail.
+Aucun Work, Codex, Agent mode, GitHub Actions ou API de modèle externe.
 ```
 
-La règle de reprise doit être présente dans le prompt natif avant le premier accès
-GitHub, pas seulement liée. Elle ne change aucune permission et ne répare pas
-ChatGPT à elle seule. Un appel refusé pour quota n'est pas une preuve de problème MCP.
+Le prompt natif doit embarquer la règle de reprise complète avant son accès GitHub.
+Un refus de quota n'est pas une preuve de problème MCP. Aucun texte ne change les
+permissions d'une app ni ne garantit le rétablissement par branche de conversation.

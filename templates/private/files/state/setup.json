@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "installation_id": "{{INSTALLATION_ID}}",
+  "template_version": "1.0.0",
+  "kit_repository": "bacoco/alfred-chatgpt",
+  "kit_commit": "{{KIT_SHA}}",
+  "manifest_path": "templates/private/manifest.json",
+  "rendered_at_utc": "{{RENDERED_AT_UTC}}",
+  "status": "awaiting_configuration",
+  "owner_login": null,
+  "github_connector": null,
+  "repository_visibility_verified": false,
+  "storage_readback_verified": false,
+  "scope_approved": false,
+  "source_read_verified": false,
+  "interactive_cycle_verified": false,
+  "scheduler_created": false,
+  "scheduled_cycle_verified": false,
+  "native_task_id": null,
+  "receipts": [],
+  "next_step": "Vérifier le dépôt privé et les fichiers écrits, puis compléter par dialogue les seuls paramètres manquants.",
+  "note": "Ce fichier est un état de progression, pas un mandat. Aucun booléen de vérification ne passe à true sans résultat réel."
+}

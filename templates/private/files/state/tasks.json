@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "tasks": [
+    {
+      "id": "briefing-daily",
+      "template_id": "briefing",
+      "enabled": false,
+      "mode": "observe",
+      "priority": 1,
+      "mandate_id": null,
+      "source_account_id": null,
+      "schedule": {
+        "timezone": null,
+        "kind": "recurring",
+        "local_time": null,
+        "timing_mode": null,
+        "start_date": null
+      },
+      "limits": {
+        "max_summaries_per_cycle": null,
+        "max_full_reads_per_cycle": null,
+        "max_pages_per_cycle": null
+      }
+    }
+  ],
+  "native_scheduler": {
+    "task_id": null,
+    "title": null,
+    "schedule": null,
+    "timing_mode": null,
+    "is_enabled": false,
+    "last_verified_at_utc": null
+  },
+  "note": "Modèle personnel à compléter dans Chat. Aucun horaire, compte ni accord inventé ; ne créer qu’une seule tâche native par instance."
+}

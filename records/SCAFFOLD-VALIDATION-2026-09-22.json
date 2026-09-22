@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-22",
+  "scope": "public_private_scaffold_1.0.0",
+  "result": "PASS_LOCAL_SCAFFOLD_VALIDATION",
+  "command": "python3 -m unittest discover -s tests -v",
+  "tests_passed": 14,
+  "tests_failed": 0,
+  "template_file_count": 16,
+  "local_write_readback_test": true,
+  "existing_instance_overwrite_test": "rejected_without_change",
+  "internal_document_links": "PASS",
+  "new_files_under_200_lines": true,
+  "private_data_reference_scan": "PASS_for_explicit_known_markers",
+  "github_new_repository_creation_tested": false,
+  "gmail_tested": false,
+  "native_scheduler_created": false,
+  "existing_private_instance_modified": false,
+  "limitations": [
+    "Tests use synthetic values and a temporary local filesystem, not another user account.",
+    "Connector capabilities and permissions must be verified separately during installation."
+  ]
+}

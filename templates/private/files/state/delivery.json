@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "channel": "chat",
+  "native_notifications": {
+    "observed_at_utc": null,
+    "push_enabled": null,
+    "email_enabled": null
+  },
+  "last_briefing": null,
+  "receipt_confirmed": false,
+  "note": "Null signifie non vérifié. Sauvegarde, sortie Chat, notification et réception sont quatre preuves différentes."
+}

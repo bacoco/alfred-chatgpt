@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "template_version": "1.0.0",
+  "target_state_schema_version": 2,
+  "source_root": "templates/private/files",
+  "required_visibility": "private",
+  "existing_instance_policy": "resume_without_overwrite",
+  "variables": [
+    "PRIVATE_REPO",
+    "PRIVATE_BRANCH",
+    "KIT_SHA",
+    "INSTALLATION_ID",
+    "RENDERED_AT_UTC"
+  ],
+  "files": [
+    {
+      "source": "templates/private/files/.gitignore",
+      "target": ".gitignore",
+      "sha256": "9d7571c0b93bc0cc6331b6c8da18bb5b5ba2901f1e1c8bfdb64888521c765306"
+    },
+    {
+      "source": "templates/private/files/AGENTS.md",
+      "target": "AGENTS.md",
+      "sha256": "13fdde48c9edee83484f75ae25dacc8ca0312fba6bf7cd87dc174647f37c4f2d"
+    },
+    {
+      "source": "templates/private/files/README.md",
+      "target": "README.md",
+      "sha256": "f3944468788dad17815e6e7fa833cf5473f02898fdda33d4d8055c15cc7e1c23"
+    },
+    {
+      "source": "templates/private/files/briefings/README.md",
+      "target": "briefings/README.md",
+      "sha256": "03373497ae27a8339344554ec01d552fac5fe5ea0128265292d9203f27f3451c"
+    },
+    {
+      "source": "templates/private/files/memory/profile.json",
+      "target": "memory/profile.json",
+      "sha256": "12af28c414c12cda0870dc892a801c74a2d965f7522ea98d6a13284c96afa7c4"
+    },
+    {
+      "source": "templates/private/files/records/README.md",
+      "target": "records/README.md",
+      "sha256": "f104bd74fdac9609bc64fcb1489e401595ce28f68ec5c6ec4ce70187cb7ff051"
+    },
+    {
+      "source": "templates/private/files/state/cases.json",
+      "target": "state/cases.json",
+      "sha256": "d5f7b4e9ee9677eacaf073bc292348798188855a72b084330c80416ab6b8b151"
+    },
+    {
+      "source": "templates/private/files/state/checkpoints.json",
+      "target": "state/checkpoints.json",
+      "sha256": "e0b4f408fbf3323158eac97ac512841f09dbb34c15c50ddf473207669255b759"
+    },
+    {
+      "source": "templates/private/files/state/control.json",
+      "target": "state/control.json",
+      "sha256": "e4b5f3fc371cfcecef6e2a8142fad1484ebcba5b0ecd7c55d4e0c741104e0a2e"
+    },
+    {
+      "source": "templates/private/files/state/decisions.json",
+      "target": "state/decisions.json",
+      "sha256": "69c54542ff893e5df7f99ba9d5cca211899d1c3e2f6703c398c4fca8552486cb"
+    },
+    {
+      "source": "templates/private/files/state/delivery.json",
+      "target": "state/delivery.json",
+      "sha256": "ac78aa22b52702f974ac70fefe9ac80662c46eb07c02f244a0f81f631995a5bb"
+    },
+    {
+      "source": "templates/private/files/state/runtime.json",
+      "target": "state/runtime.json",
+      "sha256": "f1b28fa5bf4b34588dc93ac874cc0e49d7807e967569f4b14076693d6e623fd0"
+    },
+    {
+      "source": "templates/private/files/state/setup.json",
+      "target": "state/setup.json",
+      "sha256": "653b5b5def8774be191e641e3206b9f3045abbc2991a316ccfb1814570c1e149"
+    },
+    {
+      "source": "templates/private/files/state/subscriptions.json",
+      "target": "state/subscriptions.json",
+      "sha256": "239474bcafdf56c3759f98bfafa2190a6145e056c3e278d4cc6072ee3110e8d5"
+    },
+    {
+      "source": "templates/private/files/state/tasks.json",
+      "target": "state/tasks.json",
+      "sha256": "8c356c5a8367b45145a188b45868168ff2dfc8160d6fff0b10c2605e3a28b5da"
+    },
+    {
+      "source": "templates/private/files/tests/fixtures/storage-probe.json",
+      "target": "tests/fixtures/storage-probe.json",
+      "sha256": "dcfb176d10f61c1e1320c28f61a39578b29f47b242ea3142541240eb290de1ad"
+    }
+  ],
+  "initial_state": "inactive_until_scope_is_approved",
+  "activation_instructions": "instructions/INSTALLATION.md",
+  "scheduler_instructions": "instructions/SCHEDULER.md"
+}

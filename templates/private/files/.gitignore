@@ -1,0 +1,12 @@
+# Défense supplémentaire : les écritures API doivent aussi respecter AGENTS.md.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+credentials*
+secrets*
+exports/
+raw-mail/
+.DS_Store
+__pycache__/

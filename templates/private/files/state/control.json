@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "policy_version": "unconfigured-v1",
+  "mode": "storage_only",
+  "live_processing_enabled": false,
+  "scheduler_enabled": false,
+  "external_actions_enabled": false,
+  "instruction_source": {
+    "repository": "bacoco/alfred-chatgpt",
+    "branch": "main",
+    "entrypoint": "instructions/CYCLE.md"
+  },
+  "source_accounts": [],
+  "active_mandates": [],
+  "state_paths": {
+    "tasks": "state/tasks.json",
+    "profile": "memory/profile.json",
+    "cases": "state/cases.json",
+    "decisions": "state/decisions.json",
+    "checkpoints": "state/checkpoints.json",
+    "runtime": "state/runtime.json",
+    "delivery": "state/delivery.json",
+    "setup": "state/setup.json",
+    "subscriptions": "state/subscriptions.json"
+  },
+  "private_storage": {
+    "repository": "{{PRIVATE_REPO}}",
+    "branch": "{{PRIVATE_BRANCH}}",
+    "required_visibility": "private",
+    "observed_connector_namespace": null,
+    "no_connector_substitution": true
+  },
+  "note": "Structure initiale. Le dialogue doit enregistrer le périmètre accepté et le mandat avant le premier cycle réel ; ne pas rester storage_only après cette validation."
+}
