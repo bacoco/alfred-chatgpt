@@ -57,3 +57,10 @@ ne peut annuler une action externe déjà réalisée.
 Pour un refus de contexte MCP : proposer une branche **ChatGPT**, même connecteur,
 une lecture minimale, sans changement de permissions, garantie ou tâche de remplacement.
 Voir [la procédure](../docs/MCP_CONVERSATION_RECOVERY.md).
+
+## Contrats conditionnels obligatoires
+
+Avant de reprendre une installation partielle ou une écriture incertaine, lire
+[WRITE_RECOVERY.md](WRITE_RECOVERY.md) au même SHA que STATE.md. Appliquer ses
+distinctions entre refus de sécurité, conflit, absence vérifiée et effet inconnu.
+Ce complément ne crée aucun droit ni retry automatique.
