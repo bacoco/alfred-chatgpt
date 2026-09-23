@@ -68,3 +68,7 @@ Ce complément ne crée aucun droit ni retry automatique.
 Avant de rapprocher des signaux, créer ou fusionner une affaire, lire
 [CASE_IDENTITY.md](CASE_IDENTITY.md) au même SHA. Conserver les IDs existants,
 les décisions et toutes les provenances ; une similarité de titre ne suffit pas.
+
+Avant de créer ou reprendre le contenant privé, appliquer
+[INSTALLATION_DIAGNOSTICS.md](INSTALLATION_DIAGNOSTICS.md). Un 404 ambigu ne prouve
+ni l'absence du dépôt ni la nécessité de changer les permissions.
