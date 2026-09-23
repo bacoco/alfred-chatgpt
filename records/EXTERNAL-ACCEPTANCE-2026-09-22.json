@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "kind": "external_acceptance_report",
+  "campaign_date": "2026-09-22",
+  "kit_sha": "68a1f154b6375c4fba1eb1a791582d604847196d",
+  "evidence_level": "public_issue_report",
+  "independently_reexecuted": false,
+  "reported_results": {"pass": 29, "fail": 0, "partial": 0, "uncertain": 0, "total": 29},
+  "correction": "The historical total 28 was a documentation counting error, not a new scenario.",
+  "sources": [
+    "https://github.com/bacoco/alfred-chatgpt/issues/1#issuecomment-5784310660",
+    "https://github.com/bacoco/alfred-chatgpt/issues/3#issuecomment-5782148782",
+    "https://github.com/bacoco/alfred-chatgpt/issues/5#issuecomment-5779414358"
+  ],
+  "limits": [
+    "Private receipts are not copied or independently audited here.",
+    "This historical report does not validate a changed kit or another account.",
+    "Passing acceptance does not resolve the platform causes tracked in issues 2 and 5."
+  ],
+  "activation_granted": false
+}
