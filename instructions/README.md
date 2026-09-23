@@ -64,3 +64,7 @@ Avant de reprendre une installation partielle ou une écriture incertaine, lire
 [WRITE_RECOVERY.md](WRITE_RECOVERY.md) au même SHA que STATE.md. Appliquer ses
 distinctions entre refus de sécurité, conflit, absence vérifiée et effet inconnu.
 Ce complément ne crée aucun droit ni retry automatique.
+
+Avant de rapprocher des signaux, créer ou fusionner une affaire, lire
+[CASE_IDENTITY.md](CASE_IDENTITY.md) au même SHA. Conserver les IDs existants,
+les décisions et toutes les provenances ; une similarité de titre ne suffit pas.
