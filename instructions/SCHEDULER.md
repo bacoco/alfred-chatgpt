@@ -4,6 +4,11 @@ Ce fichier est utilisé une fois la configuration et le test interactif prêts.
 La demande directe du propriétaire et ses limites sont obligatoires ; ce document
 n'autorise aucune nouvelle tâche. Réutiliser une tâche existante avant toute création.
 
+Avant de qualifier un test, un retard ou une reprise, appliquer
+[SCHEDULER_OBSERVABILITY.md](SCHEDULER_OBSERVABILITY.md) au même SHA.
+Conserver l'identité de l'occurrence ; un horaire dépassé sans preuve reste incertain.
+Aucun retry, remplacement ou changement d'horaire automatique n'en découle.
+
 ## Préparer le raccordement
 
 Lire le contrôle et state/tasks.json privés. Résoudre cadence et fuseau déjà choisis.
