@@ -1,91 +1,69 @@
-# ALFRED généraliste : positionnement et faisabilité
+# ALFRED : noyau de continuité et d'état
 
-Revue documentaire du 22 septembre 2026, avant modification du README.
-Sources primaires uniquement ; ce document n'est ni un benchmark ni une installation
-des projets cités. Leurs fonctions annoncées ne sont pas des fonctions livrées par ALFRED.
+Décision de cadrage du 23 septembre 2026, issue du
+[retour produit #6](https://github.com/bacoco/alfred-chatgpt/issues/6).
+Ce document définit le périmètre du kit ; il n'active aucune instance.
+La [comparaison documentaire du 22 septembre](https://github.com/bacoco/alfred-chatgpt/blob/68a1f154b6375c4fba1eb1a791582d604847196d/docs/POSITIONNEMENT.md)
+reste consultable avec ses sources et limites, sans être présentée comme une étude actualisée.
 
-## Ce que font d'autres projets
+## Le besoin qui justifie ALFRED
 
-| Projet et source primaire | Approche documentée | Ce que l'on retient pour ALFRED |
+Un secrétaire persistant suit des affaires qui traversent plusieurs jours, sources
+et décisions. Sa valeur recherchée est de reprendre **la même affaire**, pas de
+refaire chaque matin un résumé indépendant ni de connecter tous les services.
+Les domaines peuvent varier : projet, démarche, correspondance, rendez-vous,
+abonnement. Le besoin de continuité, et non le nom du domaine, justifie le kit.
+
+Sans état à conserver, utiliser Chat ou une tâche native compatible directement.
+Une recherche ponctuelle n'exige pas un registre d'affaires. Une répétition seule
+ne justifie pas une couche d'orchestration supplémentaire.
+
+## Le plus petit noyau à préserver
+
+| Responsabilité | Contrat existant à réutiliser | Ce qu'il ne faut pas dupliquer |
 | --- | --- | --- |
-| [Khoj — présentation](https://docs.khoj.dev/) et [fonctions](https://docs.khoj.dev/category/features/) | Assistant personnel, recherche dans des notes/documents et sur le web, rôles personnalisés et automatisations. | Partir des besoins et du contexte, sans réduire l'assistant à une application ; rendre visibles les usages de recherche et de connaissance. |
-| [OpenClaw — présentation](https://docs.openclaw.ai/) et [configuration personnelle](https://docs.openclaw.ai/start/openclaw) | Assistant via une passerelle auto-hébergée, plusieurs canaux, outils, compétences et espace de travail initialisé avec des fichiers de contexte. | Une installation guidée et une structure de mémoire concrète ; des capacités explicitement raccordées, pas déduites d'une promesse. |
-| [Letta — documentation](https://docs.letta.com/) | Agents à état persistant, usages personnels ou professionnels, mémoire, compétences et tâches récurrentes. | La continuité du contexte et la personnalisation constituent le socle ; les rôles sont des configurations, pas la définition du produit. |
+| Identifier une affaire et relier ses preuves | STATE.md et CASE_IDENTITY.md ; state/cases.json privé | Un registre par source ou une fusion par seul titre. |
+| Respecter les décisions | STATE.md ; state/decisions.json privé | Une autre autorité fondée sur un email ou une suggestion. |
+| Reprendre la couverture et le travail interrompu | CYCLE.md et STATE.md ; checkpoints/runtime privés | Une deuxième file ou un nouveau cycle qui ignore pending. |
+| Réconcilier les effets et écrire sous contrôle | STATE.md et WRITE_RECOVERY.md ; reçus privés | Un retry aveugle ou un moteur d'actions sans mandat. |
+| Qualifier l'exécution et la livraison | SCHEDULER.md et SCHEDULER_OBSERVABILITY.md | Un scheduler ALFRED parallèle ou une notification assimilée à une réception. |
 
-La convergence ci-dessus est une interprétation de conception à partir de ces
-sources, pas une affirmation d'équivalence entre produits. ALFRED ne reprend ni
-leurs serveurs, ni leurs moteurs de mémoire, ni leurs canaux, ni leur exécution locale.
-Aucune dépendance à ces projets n'est ajoutée.
+ChatGPT fournit le raisonnement ; le scheduler natif fournit le réveil ; les
+connecteurs fournissent les accès permis ; GitHub privé fournit le stockage.
+ALFRED fixe leur protocole de continuité. Les aides Python locales contrôlent des
+invariants ; elles ne sont ni un daemon ni un moteur sémantique de remplacement.
 
-## Ce que permet le kit examiné
+## Une séquence qui montre la différence
 
-Base examinée : `82a707bd5811b0a71a34b1a9d8513a9e12c004b6`.
+Scénario synthétique : une invitation, des échanges et des événements d'agenda
+sont reliés au même rendez-vous après vérification. Le propriétaire le reporte.
+Au cycle suivant, ALFRED conserve ce report, rattache un nouveau message à l'affaire
+existante et ne recrée pas une relance à partir d'un ancien signal.
+Si la fusion initiale était fausse, une correction sépare les dossiers sans perdre
+les sources ni l'historique. Si une écriture est incertaine, lire l'état réel avant
+une nouvelle tentative. Cette continuité est le résultat attendu.
 
-[MISSION.md](../instructions/MISSION.md), [STATE.md](../instructions/STATE.md) et
-[le modèle privé](../templates/private/manifest.json) séparent déjà contexte,
-préférences, affaires, décisions, autorisations et preuves.
-[CYCLE.md](../instructions/CYCLE.md) charge les tâches privées et les fiches
-du catalogue ; [SCHEDULER.md](../instructions/SCHEDULER.md) construit un réveil
-natif distinct de l'installation. Ce sont des instructions appliquées par Chat,
-pas un service autonome garantissant chaque transition.
+## Limites de la V1 et conditions d'extension
 
-| Besoin | Faisabilité dans la voie Chat retenue |
-| --- | --- |
-| Définir un rôle, des objectifs et des préférences | Dialogue puis enregistrement privé selon autorisation ; aucune nécessité conceptuelle de connecter une messagerie. |
-| Organiser et suivre une affaire | Réutilisation des registres d'affaires et de décisions ; la source et le prochain résultat attendu doivent être identifiés. |
-| Analyser des notes, dossiers, projets ou sources publiques | Possible en Chat lorsque les contenus et outils sont accessibles ; leur persistance et leur relecture ultérieure se vérifient séparément. |
-| Préparer une réunion ou une synthèse de recherche récurrente | Configurer une fiche compatible ou compléter le catalogue, autoriser les sources, puis tester dans la surface planifiée avant d'annoncer le service actif. |
-| Exécuter une action dans un service | Exige l'action exacte du connecteur, le mandat, les approbations éventuelles et la relecture de l'effet. Aucun accès universel. |
-| Installer sa mémoire privée | Seize fichiers génériques fournis ; création du dépôt et écriture de fichiers sont des capacités distinctes. |
+« Noyau V1 à préserver » est une priorité de maintenance, pas une certification
+de production. Le [bilan externe](RETEX-2026-09-22.md) reste une preuve rapportée,
+liée à une ancienne révision et à son instance. Les nouveaux tests structurels ne
+certifient ni les rapprochements sémantiques sur des mails réels ni les accès futurs.
 
-Le catalogue actuel contient **briefing, relances et abonnements**.
-Il ne constitue pas encore une bibliothèque universelle de missions prêtes à activer.
-Une nouvelle famille de tâches exige une fiche versionnée, un identifiant au
-catalogue, une instance privée, les sources et une recette. Ne pas simuler
-l'exécution d'un `template_id` absent ni modifier le kit commun avec des données privées.
-Le README présente donc des exemples configurables sans les annoncer tous installés.
+Avant toute extension, documenter : l'affaire persistante à mieux suivre ; le manque
+observé ; la réutilisation examinée ; le contrat minimal ; les droits et données
+nécessaires ; les tests de régression ; le retour arrière. Sans gain de continuité
+identifiable, ne pas ajouter la fonction au noyau.
 
-Les fenêtres et identifiants de messagerie dans STATE.md ne s'appliquent pas
-automatiquement à une autre source : une extension doit définir ses propres
-critères de couverture, de changement et de reprise, sans perdre les contrôles.
+Ne pas lancer un assistant universel, multiplier les agents, installer une base
+sémantique ou ajouter des dizaines de connecteurs par défaut. Une nouvelle fiche
+reste inactive jusqu'à son mandat et sa recette. Gmail demeure optionnel.
+Les décisions d'instance et permissions actuelles ne changent pas avec ce cadrage.
 
-## Vérification des capacités ChatGPT
+## Critères de conservation
 
-[Applications connectées](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt),
-consulté le 22 septembre 2026 : lecture et actions dépendent de l'app, du compte,
-des permissions et de la surface. Les autorisations ne créent pas d'actions absentes.
-Conséquence : choisir les outils après la mission, puis tester les capacités exactes.
-
-[GitHub dans ChatGPT](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt),
-consulté le même jour : l'app GitHub standard est décrite en lecture seule.
-Le connecteur de cette édition expose lecture et écriture de fichiers, mais
-aucune action de création de dépôt n'a été trouvée dans ses schémas exposés.
-Ce constat de schéma n'est pas un test de création ni une propriété de tous les comptes.
-Ne pas promettre une installation complète à toute personne ayant simplement connecté GitHub.
-
-[Tâches natives](https://help.openai.com/en/articles/10291617-tasks-in-chatgpt),
-consulté le même jour : les tâches peuvent être ponctuelles ou récurrentes ;
-leur disponibilité dépend du compte. Elles n'accèdent pas automatiquement aux
-fichiers téléversés dans le projet. Les déclenchements événementiels documentés
-via Work sont hors du périmètre Chat uniquement retenu ici.
-Une sortie Chat, une notification configurée et sa réception sont des preuves distinctes.
-
-## Conséquences éditoriales
-
-Le README commence par l'intérêt d'un secrétaire généraliste, puis l'installation.
-Les usages professionnels, personnels, documentaires et de recherche précèdent
-l'exemple de correspondance. Gmail n'est ni un prérequis ni la mission par défaut.
-La consigne de configuration commence par l'objectif et les critères de réussite,
-puis choisit les sources et une tâche réellement raccordable.
-
-Le socle générique, les modèles actuellement fournis et les extensions à réaliser
-sont distingués. Les fichiers détaillés portent la technique ; le lecteur n'a pas
-à recevoir un mode d'emploi séparé par mail pour démarrer.
-
-## Portée de cette modification
-
-Documentation et cadrage de la configuration seulement : aucune nouvelle intégration,
-aucune migration privée, aucun élargissement d'autorisation, aucun changement de tâche native.
-Les essais antérieurs ne sont pas réétiquetés comme preuve de toutes les missions.
-Une installation chez un nouvel utilisateur et chaque nouvelle mission restent
-à vérifier avec ses propres outils, données autorisées et critères de résultat.
+Préserver une affaire stable entre deux cycles, toutes ses provenances et les
+décisions antérieures. Réduire doublons et interventions inutiles, sans masquer
+les incertitudes. Prouver chaque effet avant de le qualifier de réussi.
+Mesurer ces résultats dans une recette autorisée plutôt que compter les connecteurs.
+La [feuille de route](ROADMAP.md) applique ces critères aux prochains changements.
