@@ -1,47 +1,62 @@
-# Feuille de route proposée
+# Feuille de route — préserver le noyau de continuité
 
-Date : 20 septembre 2026. **Proposition de l'étude ; aucune phase n'est activée.**
+Cadrage du 23 septembre 2026 après le [retour produit #6](https://github.com/bacoco/alfred-chatgpt/issues/6).
+Aucune phase ni nouvelle permission n'est activée par ce document.
+La [proposition initiale du 20 septembre](https://github.com/bacoco/alfred-chatgpt/blob/68a1f154b6375c4fba1eb1a791582d604847196d/docs/ROADMAP.md)
+est conservée dans l'historique ; elle n'est pas un état de déploiement.
 
-Le [kit d'instructions modifiables](../instructions/README.md) complète désormais
-le dossier. Pour les six étapes concrètes et les preuves de mise en service,
-voir [MISE-EN-SERVICE.md](MISE-EN-SERVICE.md). Le kit ne constitue pas un runtime.
+## 1. Stabiliser le noyau existant
 
-## Phase 0 — Vérifier les capacités et l'existant
+Appliquer le [positionnement](POSITIONNEMENT.md) : affaire canonique, décisions,
+provenance, checkpoints, réconciliation et livraison observable. Ne pas créer un
+second scheduler ni refaire les registres privés pour ajouter ces précisions.
 
-Relire le code, les tests et les derniers reçus de `chatgpt-cost-router` et `loriq-watch-scheduler`. Recenser séparément les capacités de Chat interactif et de la tâche planifiée. Vérifier les droits du compte, la lecture d'un registre, la persistance d'un checkpoint et les actions des connecteurs requis.
+Les compléments de reprise, identité, installation et observation sont des contrats
+et contrôles du kit. Ils ne règlent pas à eux seuls les causes de refus ou retards
+externes. Conserver leur diagnostic et les limites de preuve.
 
-Comparer le coût et la complexité des briques candidates avant adoption. Ne pas interpréter leur documentation comme une preuve d'installation.
+Critère : non-régression sur les invariants et lecture des effets réellement produits ;
+aucun écrasement, double effet ou élargissement d'autorisation dans la recette exécutée.
 
-**Critère de sortie :** matrice de capacités sourcée, architecture minimale choisie, stockage privé identifié, inconnues et restrictions explicites.
+## 2. Revalider une instance à la nouvelle révision
 
-## Phase 1 — Registre et briefing
+Suivre [MISE-EN-SERVICE.md](MISE-EN-SERVICE.md) sous mandat borné. Tester d'abord des
+fixtures, puis les sources autorisées. Deux cycles successifs doivent conserver les
+mêmes affaires et décisions, gérer les nouveaux signaux et préserver la provenance.
+Tester aussi séparation d'une fusion erronée, interruption, conflit, refus explicite,
+réponse tardive et résultat de scheduler non encore observable.
 
-Définir le profil personnalisable, le registre des affaires ouvertes et un inventaire d'abonnements. Conserver les sources, les dates, les inconnues et les états de validité. Prévoir une ingestion incrémentale et une correction simple par l'utilisateur.
+Les 29 PASS du [bilan externe](RETEX-2026-09-22.md) ne sont pas relabellisés comme
+preuve de la révision nouvelle. Une capacité interactive ne valide pas la surface
+planifiée. Une tâche créée ne prouve ni le cycle exécuté ni la réception du briefing.
 
-Commencer sur des fixtures synthétiques, puis sur un périmètre de lecture explicitement autorisé. Ne pas envoyer de relances.
+Critère : reçus privés de la révision testée, couverture et relecture vérifiées,
+limites nommées, puis seulement activation de la cadence expressément convenue.
 
-**Critère de sortie :** chaque affirmation importante et chaque échéance ont une preuve ou un statut d'incertitude ; le briefing réduit réellement le travail de revue.
+## 3. Ajouter une action seulement si une affaire le justifie
 
-## Phase 2 — Dossiers prêts à agir
+Réutiliser les contrats existants de mandat, approbation et réconciliation avant
+toute nouvelle action déléguée. Vérifier comptes, ressources, destinataires, plafonds,
+conditions d'arrêt et capacité effective. Pas de relance d'essai sur un tiers réel
+pour simplement obtenir un test vert. Les fixtures ne prouvent pas un envoi réel.
 
-Préparer relances, rendez-vous, comparatifs et lettres avec leurs pièces justificatives. Relire les derniers échanges avant de proposer l'action. Ne pas confondre absence de réponse et nécessité de relance, ni absence de trace et non-utilisation d'un abonnement.
+Critère : besoin de continuité documenté, absence d'action hors mandat, preuve de
+l'effet, reprise sans répétition aveugle et retour arrière défini.
 
-**Critère de sortie :** décisions prêtes à arbitrer, tests des faux positifs, des réponses tardives, des doublons et des dossiers déjà résolus.
+## 4. Extensions mesurées, pas catalogue universel
 
-## Phase 3 — Mandats et exécution déléguée
+Une nouvelle source ou mission doit démontrer ce qu'elle apporte à une affaire
+persistante et pourquoi les outils existants ne suffisent pas. Définir couverture,
+identité, reprise, confidentialité et tests avant ajout. Garder la fiche inactive
+par défaut. Une extension n'exige ni un autre modèle ni un moteur d'agents par principe.
 
-Concevoir une extension de mandat borné en examinant d'abord les approbations exactes existantes. Lier l'autorisation aux comptes, ressources, destinataires, catégories d'action, plafonds, délais et conditions d'arrêt. Respecter toutes les confirmations imposées par les services.
-
-Introduire journalisation, relecture après écriture et réconciliation. Ne jamais promettre un « exactement une fois » universel pour un fournisseur externe : gérer les résultats inconnus de manière conservatrice.
-
-**Critère de sortie :** aucun double effet dans les scénarios testés ; pas d'action hors mandat ; preuves de résultat et cas d'incertitude correctement conservés.
-
-## Phase 4 — Extensions mesurées
-
-Élargir aux documents, à l'agenda et aux projets selon les capacités démontrées et la valeur constatée. N'introduire graphe, multi-agent, nouvelle API ou nouveau runtime qu'avec un besoin non couvert et un gain mesuré.
+Sans besoin de continuité, préférer une conversation ou une tâche native compatible
+simple. Ne pas transformer toute demande ponctuelle en infrastructure ALFRED.
 
 ## Indicateurs
 
-Mesurer engagements manqués, fausses relances, doublons, actions non autorisées, erreurs de mémoire, interventions inutiles, corrections utilisateur, temps de revue, coût par dossier et affaires réellement résolues.
-
-Les taux et seuils d'acceptation doivent être décidés avec le propriétaire ; aucun niveau de fiabilité n'est annoncé par ce dossier documentaire.
+Mesurer engagements manqués, doublons, fausses relances, erreurs de fusion,
+provenances perdues, décisions oubliées, interventions inutiles et temps de revue.
+Distinguer résultats constatés, scénarios synthétiques et fonctionnalités non testées.
+Les seuils sont convenus avec le propriétaire ; aucune fiabilité universelle n'est
+annoncée à partir de la seule publication de ce kit.

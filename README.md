@@ -1,159 +1,130 @@
-# ALFRED — Votre secrétaire personnel généraliste dans ChatGPT
+# ALFRED — Votre secrétaire persistant dans ChatGPT
 
-**Un secrétaire qui s'adapte à vos objectifs, conserve le contexte que vous lui
-confiez et suit ce qui reste à faire — dans votre vie professionnelle ou personnelle.**
+**Suivre les mêmes affaires dans le temps, conserver vos décisions et reprendre
+le travail sans repartir de zéro, même lorsque les informations viennent de plusieurs sources.**
 
-Vous définissez son rôle : suivre un projet, préparer un dossier, organiser vos
-priorités, vous aider à rechercher et décider, ou accompagner une démarche.
-ALFRED relie les informations autorisées, prépare le travail, conserve vos décisions
-et vérifie les résultats des actions que vous lui déléguez.
-**La gestion des mails est un cas d'usage, pas la définition d'ALFRED.**
+ALFRED sert les dossiers qui vivent plusieurs jours ou semaines : un projet,
+un rendez-vous à préparer, une démarche, une réponse attendue ou un abonnement.
+Les mails sont des signaux possibles, pas la définition du produit. Gmail est optionnel.
+L'unité de suivi est **l'affaire**, avec ses preuves, son état et sa prochaine action.
+
+Pour une question, une recherche ou un résumé ponctuel, utilisez directement Chat.
+Une tâche native compatible peut suffire pour une répétition sans état métier durable.
+**ALFRED ne remplace ni ChatGPT ni son scheduler ; il n'est pas un passage obligatoire.**
 
 ## Installer votre ALFRED
 
-Ouvrez un nouveau **chat ChatGPT**, puis copiez ce paragraphe. La configuration
-se fait ensuite par discussion : vous décrivez vos besoins, Chat prépare les
-fichiers de votre instance et vérifie les accès nécessaires.
+Le parcours : vérifier les capacités ; créer ou reprendre votre dépôt privé ;
+choisir une ou deux missions ; tester un cycle réel ; puis tester la planification
+seulement lorsqu'elle est demandée. Les réglages se font par conversation.
+
+Selon les capacités du connecteur, une étape manuelle peut être nécessaire :
+créer un dépôt **privé** et vérifier son accès dans l'installation GitHub App.
+Un README facilite l'initialisation ; la visibilité privée, elle, est bloquante.
+ALFRED vérifie et reprend sans écraser l'existant ni changer les permissions.
+[Diagnostic guidé](instructions/INSTALLATION_DIAGNOSTICS.md).
+
+Ouvrez un nouveau **chat ChatGPT**, puis copiez ce paragraphe :
 
 ```text
 Dans ce Chat uniquement, installe mon secrétaire ALFRED à partir de https://github.com/bacoco/alfred-chatgpt : lis instructions/INSTALLATION.md, génère mon propre dépôt GitHub privé à partir de templates/private/manifest.json, puis guide-moi pour choisir missions, sources, préférences et cadence, teste un cycle réel et crée le scheduler natif convenu. Conserve mes réglages et résultats dans mon dépôt privé, modifiables ensuite par conversation ; reprends une instance existante sans l’écraser. Si le connecteur est refusé par cette conversation, propose une nouvelle branche Chat avec le même connecteur, sans changer ses permissions, puis vérifie l’accès par une lecture, sans garantir le rétablissement.
 ```
 
-**Vous n'avez ni code ni fichiers JSON à écrire.** Le kit fournit les
-[16 fichiers initiaux du dépôt privé](templates/private/README.md).
-Chat vous aide à choisir missions, informations confiées, sources, niveau d'autonomie,
-forme des résultats et éventuelle cadence. **Gmail n'est pas obligatoire** :
-ne connectez que les services utiles aux missions retenues.
+Vous n'avez ni code ni JSON à écrire. Le kit fournit les
+[seize fichiers initiaux](templates/private/README.md).
+Il faut un connecteur GitHub autorisé à lire et écrire dans votre dépôt privé ;
+la création d'un dépôt, l'écriture de fichiers et la planification sont des
+capacités distinctes, à vérifier réellement. Le prompt ne crée aucun droit.
 
-Pour l'instance persistante, il faut un accès GitHub capable de lire **et d'écrire**
-dans votre dépôt privé. Sa création automatique exige aussi une action de création
-de dépôt ; sinon le guide vous accompagne sur cette seule étape manquante.
-La planification exige des tâches natives accessibles sur votre compte.
-L'installation teste ces capacités et signale ce qui manque ; le paragraphe
-ne crée pas des permissions. [Parcours détaillé](instructions/INSTALLATION.md).
+Une instance existante est reprise avec ses choix, sans second dépôt, second
+scheduler, fork public ou remise à zéro. [Installation détaillée](instructions/INSTALLATION.md).
 
-Une instance existante est reprise, sans second dépôt, second scheduler ni remise
-à zéro. Aucun fork public n'est nécessaire pour vos réglages personnels.
+## Ce qui reste d'un cycle au suivant
 
-## Un même secrétaire, des missions différentes
+```text
+signaux autorisés → même affaire → état et décisions → prochaine action
+                         ↑                                  ↓
+                   réconciliation ← nouveaux éléments et résultats
+```
 
-Ces exemples servent à définir **votre** ALFRED. Leur réalisation dépend des sources
-accessibles, des outils autorisés et, pour un suivi automatique, d'une tâche
-raccordée et testée ; ils ne sont pas des intégrations toutes livrées d'avance.
+Exemple synthétique : plusieurs mails et deux événements représentent un même
+rendez-vous. ALFRED rattache leurs références à une affaire, après vérification,
+plutôt que de créer une alerte par source. Deux rendez-vous distincts ne sont pas
+fusionnés parce que leurs titres se ressemblent.
 
-| Votre besoin | Le résultat que vous pouvez lui demander de préparer ou suivre |
+« C'est résolu », « Abandonne », « Reprends lundi » ou « Sépare ces deux dossiers »
+sont des décisions à conserver et vérifier, pas des phrases à oublier au réveil
+suivant. Un ancien signal ne rouvre pas une affaire close. Une réponse tardive doit
+être relue avant de proposer une relance. Un doute reste visible, sans action forcée.
+
+## Un noyau limité, des responsabilités claires
+
+| Élément | Rôle dans la voie retenue |
 | --- | --- |
-| Projets et objectifs | Un état d'avancement, les décisions prises, les blocages et les prochaines actions. |
-| Réunions et dossiers | Une synthèse des documents disponibles, les points à discuter et les engagements à suivre. |
-| Recherche et veille | Une synthèse sourcée, une comparaison d'options et les changements pertinents pour une décision. |
-| Organisation personnelle | Le suivi d'une démarche, d'un événement à préparer ou d'échéances que vous lui confiez. |
-| Connaissances et apprentissage | Des notes structurées, des explications adaptées et un suivi des questions à approfondir. |
-| Correspondance, si vous la choisissez | Les réponses attendues, les informations utiles et les actions à préparer. |
+| ChatGPT Chat | Comprendre, analyser et utiliser les outils autorisés. |
+| Scheduler natif | Réveiller une tâche convenue ; pas conserver l'état métier. |
+| Connecteurs | Lire les sources ou réaliser les actions explicitement autorisées. |
+| GitHub privé | Conserver affaires, décisions, checkpoints et reçus minimaux. |
+| ALFRED | Appliquer le protocole de continuité, d'identité et de réconciliation. |
 
-Le rôle n'est pas figé. Un même ALFRED peut combiner plusieurs missions compatibles
-avec ses accès, ou se concentrer sur un seul objectif. Les connecteurs sont des
-moyens d'accès ; ils ne définissent pas le métier du secrétaire.
+Le [contrat de positionnement](docs/POSITIONNEMENT.md) définit ce noyau et les
+conditions d'une extension. Pas de serveur ALFRED, second ordonnanceur, moteur de
+mémoire parallèle ou catalogue universel ajouté pour ce besoin.
+Les outils Python sous `tools/` sont des aides locales de rendu ou de validation ;
+ils ne connectent pas les comptes et ne remplacent pas le jugement sémantique de Chat.
 
-## Ce qu'ALFRED ajoute à une conversation ponctuelle
+## Livré et vérifié ne veulent pas dire activé partout
 
-Son intérêt est la **continuité** : des préférences enregistrées, des dossiers suivis,
-des décisions conservées et un travail qui reprend au lieu de repartir de zéro.
-La mémoire durable est explicite, dans votre dépôt privé : elle ne repose pas sur
-la supposition que ChatGPT se souviendra automatiquement de toutes les conversations.
+Le dépôt fournit des instructions, un modèle privé, des contrats et des tests.
+Le [catalogue](instructions/tasks/registry.json) contient briefing, relances et
+abonnements, inactifs par défaut. Une mission supplémentaire exige une fiche,
+un mandat, des sources et une recette ; aucune intégration n'est garantie par son nom.
 
-Vous pouvez corriger son fonctionnement en lui parlant : « Ce projet est terminé »,
-« Reprends ce dossier lundi », « Voici ma nouvelle priorité », « Fais une synthèse
-plus courte ». ALFRED enregistre la décision autorisée, applique le changement et
-relit ce qui a été sauvegardé. Résolution ou abandon arrête les rappels ; un report
-conserve la date convenue. [Personnalisation](instructions/README.md).
+La [recette externe du 22 septembre](docs/RETEX-2026-09-22.md) rapporte 29 scénarios
+réussis sur sa révision et son instance. Ce n'est pas une nouvelle exécution de ces
+tests, une certification universelle ni la validation des modifications ultérieures.
+Les tests synthétiques du dépôt ne prouvent pas l'accès Gmail, Calendar ou Scheduler.
+Les refus d'écriture et retards de visibilité du scheduler gardent leurs limites connues.
 
-Un résultat peut être demandé dans Chat ou lors d'un réveil natif convenu.
-La tâche planifiée relit les instructions et l'état privé ; elle ne réinstalle
-pas ALFRED. Une modification d'horaire doit aussi être appliquée à la tâche native.
+Une création de tâche ne prouve pas son exécution. Un résultat sauvegardé, une sortie
+Chat, une notification configurée et une réception confirmée sont quatre états distincts.
+Un résultat incertain se réconcilie avant toute reprise ; il ne justifie pas un doublon.
 
-## Ce qui existe, et ce qui demande une extension
+## Confidentialité et autonomie
 
-Le dépôt fournit le **kit de configuration**, le modèle de mémoire privée et les
-contrats de suivi, décision, reprise et vérification. Il n'est pas un serveur
-autonome : Chat exécute les instructions avec les outils réellement disponibles.
+Le kit public conserve seulement des règles génériques et exemples synthétiques.
+Les comptes, mandats, préférences, affaires et reçus réels restent dans votre dépôt privé.
+Aucun mot de passe, token, clé privée, export brut sensible ou lien à usage unique dans Git.
+Git privé conserve son historique ; ce n'est pas un coffre de secrets.
 
-Le [catalogue actuel](instructions/tasks/registry.json) contient trois modèles :
-**briefing**, **préparation de relances** et **revue d'abonnements**.
-Ce sont des points de départ, pas les frontières du projet.
-Une nouvelle famille de tâches doit avoir une [fiche](instructions/tasks/TEMPLATE.md),
-être référencée au catalogue, associée à une instance privée autorisée, puis testée.
-Décrire un besoin ne suffit pas à livrer un connecteur ou une automatisation manquante.
+Le mode observe prépare, analyse et persiste selon mandat, sans mutation Gmail/Calendar.
+Les envois, labels, archives, modifications d'agenda et autres actions demandent chacun
+un outil disponible, une autorisation actuelle et une preuve de résultat.
+Aucune notification native ne vaut autorisation d'envoyer un mail en votre nom.
 
-La configuration peut privilégier un premier résultat utile en lecture et préparation.
-Les envois, publications, modifications d'agenda ou autres actions sur un service
-exigent chacun un outil disponible, un mandat explicite et une vérification.
-Une réussite sur une source ne valide ni toutes les autres sources ni le prochain
-réveil automatique. [Faisabilité et comparaison des approches](docs/POSITIONNEMENT.md).
+La voie retenue reste Chat + connecteurs autorisés + dépôt privé + réveils natifs
+convenus. Aucun basculement implicite vers Work, Codex, Agent mode, GitHub Actions
+ou une API de modèle externe. Aucune correction du kit ne réinitialise une instance
+privée, n'élargit ses droits ou ne modifie ses horaires.
 
-## Deux dépôts, deux rôles
+## Connecteur refusé dans une conversation
 
-| Kit public partagé | Votre instance privée |
-| --- | --- |
-| Mission, instructions et modèles génériques | Vos objectifs, préférences, comptes et autorisations |
-| Modèle initial sans données personnelles | Vos affaires, décisions, notes minimales et résultats |
-| Contrats de cycle et de vérification | Vos tâches, points de reprise et reçus |
-
-La structure privée est générée depuis le [manifeste](templates/private/manifest.json) :
-`memory/` pour les préférences, `state/` pour la configuration et le suivi,
-`briefings/` pour les restitutions, `records/` pour les preuves.
-Les exemples sous `tests/fixtures/` restent fictifs.
-Aucune donnée de l'auteur ni d'une autre installation n'est copiée.
-
-## Limites pratiques et confidentialité
-
-La voie prévue est **ChatGPT Chat + connecteurs autorisés + dépôt GitHub privé
-+ tâches natives lorsque disponibles**. Pas de serveur ALFRED à héberger, ni
-d'API de modèle externe à configurer pour cette voie. Ce n'est pas un assistant
-local hors ligne. Aucun basculement implicite vers Work, Codex, Agent mode,
-GitHub Actions ou un autre moteur d'agents.
-
-Les accès dépendent du compte, du connecteur et de la surface utilisée.
-L'app GitHub standard est documentée en lecture seule ; elle ne suffit donc pas
-à promettre l'installation avec écriture à tout le monde. Vérifier les actions
-du connecteur choisi, sans le remplacer silencieusement.
-[GitHub dans ChatGPT](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)
-et [applications connectées](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt).
-
-Un document fourni dans une conversation n'est pas automatiquement accessible à
-une tâche planifiée. Pour le suivi durable, prévoir une source relisible autorisée
-ou une synthèse minimale enregistrée dans le privé. Les déclenchements événementiels
-décrits comme passant par Work ne font pas partie de cette voie Chat uniquement.
-[Documentation des tâches](https://help.openai.com/en/articles/10291617-tasks-in-chatgpt).
-
-**Résultat sauvegardé, sortie dans Chat, notification et réception sont distincts.**
-Les notifications natives se règlent dans ChatGPT → Settings → Notifications.
-Elles n'autorisent pas un envoi via Gmail et ne prouvent pas sa réalisation.
-
-Ne placer aucune donnée personnelle dans le kit public, ses issues ou ses exemples.
-Aucun mot de passe, token, clé privée, lien à usage unique ou export brut sensible
-dans les dépôts. Git privé conserve son historique : ce n'est pas un coffre de
-secrets. ChatGPT, GitHub et les services connectés gardent leurs propres règles
-de traitement des données.
-
-## Si un connecteur est refusé dans ce chat
-
-Pour un refus visant la conversation — notamment `This conversation does not support
-developer MCPs` ou `This conversation is restricted to developer MCPs` — essayer
-une nouvelle branche **ChatGPT** avec **le même connecteur et le même compte**,
-puis vérifier par une lecture minimale. Ne modifier aucune permission.
-
-Il ne s'agit pas d'une branche Git. Cette piste **n'est pas un correctif garanti**.
-Un quota, une authentification ou des droits manquants ne sont pas automatiquement
-un problème de conversation. En tâche planifiée, signaler le blocage sans créer
-une autre tâche ni prétendre ouvrir un nouveau chat.
+Pour `This conversation does not support developer MCPs` ou
+`This conversation is restricted to developer MCPs`, proposer une nouvelle branche
+**ChatGPT** avec **le même connecteur et compte**, puis vérifier une lecture minimale.
+Ne changer aucune permission. Cette piste n'est pas une réparation garantie.
+Une branche Git n'est pas une branche de conversation. Une restriction d'administrateur,
+un quota ou une authentification ne se contourne pas par cette procédure.
+En tâche planifiée, signaler le blocage, sans créer de tâche de remplacement.
 [Procédure détaillée](docs/MCP_CONVERSATION_RECOVERY.md).
 
 ## Documentation
 
-- [Installation](instructions/INSTALLATION.md), [modèle privé](templates/private/README.md) et [scheduler](instructions/SCHEDULER.md)
-- [Personnalisation](instructions/README.md), [mission](instructions/MISSION.md), [cycle](instructions/CYCLE.md) et [état](instructions/STATE.md)
-- [Mise en service et recette](docs/MISE-EN-SERVICE.md), [positionnement et sources](docs/POSITIONNEMENT.md)
-- [Analyse fondatrice](docs/ANALYSE-2026-09-20.md), [sources historiques](docs/SOURCES.md), [feuille de route](docs/ROADMAP.md)
+- [Installation](instructions/INSTALLATION.md), [modèle privé](templates/private/README.md), [personnalisation](instructions/README.md)
+- [Mission](instructions/MISSION.md), [cycle](instructions/CYCLE.md), [état](instructions/STATE.md), [identité des affaires](instructions/CASE_IDENTITY.md)
+- [Reprise d'écriture](instructions/WRITE_RECOVERY.md), [scheduler](instructions/SCHEDULER.md), [observation des cycles](instructions/SCHEDULER_OBSERVABILITY.md)
+- [Mise en service](docs/MISE-EN-SERVICE.md), [positionnement](docs/POSITIONNEMENT.md), [feuille de route](docs/ROADMAP.md)
+- [Analyse fondatrice](docs/ANALYSE-2026-09-20.md), [sources historiques](docs/SOURCES.md), [retour de recette](docs/RETEX-2026-09-22.md)
 
 Nom de travail inspiré du majordome de Batman. Projet indépendant, sans affiliation
-revendiquée à DC, OpenAI ni aux projets comparés.
+revendiquée à DC, OpenAI ni aux projets cités dans les études historiques.
